@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:render/src/service/exception.dart';
 import 'package:render/src/service/task_identifier.dart';
-import 'package:rich_console/rich_console.dart';
 import 'package:uuid/uuid.dart';
 
 import 'dart:async';
@@ -62,20 +61,9 @@ class RenderController {
       bool started = true;
       stream.listen((event) {
         if (started) {
-          printRich("[Render plugin] $startMessage",
-              foreground: Colors.lightGreen, bold: true, underline: true);
+
           started = false;
         }
-        printRich(event.toString(),
-            foreground: event.isError
-                ? Colors.red
-                : event.isResult
-                    ? Colors.green
-                    : event.isActivity
-                        ? Colors.lightGreen
-                        : event.isLog
-                            ? Colors.blueGrey
-                            : null);
       });
     }
   }
